@@ -41,14 +41,14 @@ export const ColumnItem = (
                         index={index}
                       >
                         {(provided) => {
-                          if (flightplan.departure == props.airport) {
+                          if (flightplan.departure === props.airport) {
                             return (
                               <DepartureStrip
                                 flightplan={flightplan}
                                 provided={provided}
                               />
                             )
-                          } else if (flightplan.arrival == props.airport) {
+                          } else if (flightplan.arrival === props.airport) {
                             return (
                               <ArrivalStrip
                                 flightplan={flightplan}
