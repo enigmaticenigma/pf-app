@@ -1,4 +1,4 @@
-import * as React from "react"
+import { forwardRef } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -7,7 +7,7 @@ export interface TextareaProps
   className: string
 }
 
-const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
+const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, ...props }, ref) => {
     return (
       <textarea

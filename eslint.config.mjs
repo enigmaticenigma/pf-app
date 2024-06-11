@@ -3,7 +3,7 @@ import tseslint from "typescript-eslint"
 import nextPlugin from "@next/eslint-plugin-next"
 import stylistic from "@stylistic/eslint-plugin"
 import hooksPlugin from "eslint-plugin-react-hooks"
-import { fixupConfigRules, fixupPluginRules } from "@eslint/compat"
+import { fixupPluginRules } from "@eslint/compat"
 import reactPlugin from "eslint-plugin-react"
 
 export default tseslint.config(
