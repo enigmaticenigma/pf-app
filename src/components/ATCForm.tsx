@@ -12,13 +12,6 @@ import { createATC } from "@/app/actions/createATC"
 import { Button } from "@/components/ui/button"
 import FormInput from "@/components/FormInput"
 import { Form } from "@/components/ui/form"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
 import { atcs } from "@/lib/schema"
 
 const ATCSchema = createInsertSchema(atcs, {
