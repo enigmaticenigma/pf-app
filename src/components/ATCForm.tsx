@@ -49,38 +49,30 @@ export default function ATCForm() {
   }
 
   return (
-    <Card className={"w-full max-w-sm"}>
-      <CardHeader>
-        <CardTitle className={"text-2xl"}>ATC Form</CardTitle>
-        <CardDescription>Please fill out the form below.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className={"space-y-4"}>
-            <FormCombobox
-              dataTable={airports}
-              label={"Airport"}
-              form={form}
-              id={"airport"}
-            />
-            <FormCombobox
-              label={"Tower Position"}
-              form={form}
-              dataTable={towerPositions}
-              id={"towerPosition"}
-            />
-            <FormInput
-              form={form}
-              label={"Frequency"}
-              type={"number"}
-              id={"frequency"}
-            />
-            <Button type={"submit"} className={"w-full"}>
-              Submit
-            </Button>
-          </form>
-        </Form>
-      </CardContent>
-    </Card>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className={"space-y-4"}>
+        <FormCombobox
+          dataTable={airports}
+          label={"Airport"}
+          form={form}
+          id={"airport"}
+        />
+        <FormCombobox
+          label={"Tower Position"}
+          form={form}
+          dataTable={towerPositions}
+          id={"towerPosition"}
+        />
+        <FormInput
+          form={form}
+          label={"Frequency"}
+          type={"number"}
+          id={"frequency"}
+        />
+        <Button type={"submit"} className={"w-full"}>
+          Submit
+        </Button>
+      </form>
+    </Form>
   )
 }
