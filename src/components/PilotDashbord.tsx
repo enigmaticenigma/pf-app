@@ -8,9 +8,11 @@ import { Form, FormMessage } from "@/components/ui/form"
 import { Button } from "@/components/ui/button"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
+import { updateFlightplan } from "@/app/actions/updateFlightplan"
 
 const PilotSchema = z.object({
-  squawk: z.coerce.number()
+  squawk: z.coerce.number(),
+  frequency: z.coerce.number(),
 })
 
 export default function PilotDashboard({ flightplan }: { flightplan: Flightplan }) {
@@ -18,11 +20,12 @@ export default function PilotDashboard({ flightplan }: { flightplan: Flightplan 
     resolver: zodResolver(PilotSchema),
     defaultValues: {
       squawk: flightplan.squawk,
+      frequency: flightplan.frequency,
     },
   })
 
-  function onSubmit(values: z.infer<typeof PilotSchema>) {
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof PilotSchema>) {
+    await updateFlightplan({ ...values, flightplan })
   }
 
   return (
@@ -35,6 +38,7 @@ export default function PilotDashboard({ flightplan }: { flightplan: Flightplan 
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-2 gap-4">
               <FormInput form={form} label={"Squawk"} type={"number"} id={"squawk"} />
+              <FormInput form={form} label={"Frequency"} type={"text"} id={"frequency"} />
               <Button type={"submit"} className="col-span-2">Submit</Button>
             </form>
             <FormMessage />
