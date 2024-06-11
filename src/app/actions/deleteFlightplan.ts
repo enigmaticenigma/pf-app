@@ -1,3 +1,5 @@
+"use server"
+
 import { db } from "@/lib/db"
 import { flightplans } from "@/lib/schema"
 import { eq } from "drizzle-orm"

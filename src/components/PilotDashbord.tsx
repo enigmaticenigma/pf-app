@@ -2,7 +2,7 @@
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Flightplan } from "@/types/flightplan"
-import PilotUpdateForm from "./PilotUpdateForm"
+import PilotUpdateForm from "@/components/PilotUpdateForm"
 
 export default function PilotDashboard({ flightplan }: { flightplan: Flightplan }) {
   return (
