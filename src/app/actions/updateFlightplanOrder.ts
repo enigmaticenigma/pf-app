@@ -19,7 +19,7 @@ export async function updateFlightplanOrder({
   try {
     await Promise.all(
       items.map(async (flightplan) =>
-        db
+        await db
           .update(flightplans)
           .set({
             order: flightplan.order,
