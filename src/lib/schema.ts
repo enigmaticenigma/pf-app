@@ -15,24 +15,12 @@ export const atcs = pgTable("atc", {
   frequency: doublePrecision("frequency").notNull(),
 });
 
-export const atcRelations = relations(atcs, ({ many }) => ({
-  columns: many(columns),
-}));
-
 export const columns = pgTable("columns", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   order: integer("order").notNull(),
   atcId: integer("atc_id"),
 });
-
-export const columnsRelations = relations(columns, ({ one, many }) => ({
-  atc: one(atcs, {
-    fields: [columns.atcId],
-    references: [atcs.id],
-  }),
-  flightplans: many(flightplans),
-}));
 
 export const flightplans = pgTable("flight_plan", {
   id: serial("id").primaryKey(),
@@ -55,9 +43,24 @@ export const flightplans = pgTable("flight_plan", {
   columnId: integer("column_id").default(-1),
   order: integer("order").notNull().default(-1),
 });
+
 export const flightplansRelations = relations(flightplans, ({ one }) => ({
   column: one(columns, {
     fields: [flightplans.columnId],
     references: [columns.id],
   }),
 }));
+
+export const columnsRelations = relations(columns, ({ one, many }) => ({
+  atc: one(atcs, {
+    fields: [columns.atcId],
+    references: [atcs.id],
+  }),
+  flightplans: many(flightplans),
+
+}));
+
+export const atcRelations = relations(atcs, ({ many }) => ({
+  columns: many(columns),
+}));
+
