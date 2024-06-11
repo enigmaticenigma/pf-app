@@ -39,6 +39,10 @@ const FormField = <
   )
 }
 
+const FormItemContext = createContext<FormItemContextValue>(
+  {} as FormItemContextValue
+)
+
 const useFormField = () => {
   const fieldContext = useContext(FormFieldContext)
   const itemContext = useContext(FormItemContext)
@@ -61,10 +65,6 @@ const useFormField = () => {
 interface FormItemContextValue {
   id: string
 }
-
-const FormItemContext = createContext<FormItemContextValue>(
-  {} as FormItemContextValue
-)
 
 const FormItem = forwardRef<
   HTMLDivElement,
