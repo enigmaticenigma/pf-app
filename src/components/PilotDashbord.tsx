@@ -1,14 +1,17 @@
 "use client"
 
-import { Flightplan } from "@/types/flightplan"
-import FormInput from "@/components/FormInput"
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+import { z } from "zod"
+
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { deleteFlightplan } from "@/app/actions/deleteFlightplan"
+import { updateFlightplan } from "@/app/actions/updateFlightplan"
 import { Form, FormMessage } from "@/components/ui/form"
 import { Button } from "@/components/ui/button"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { z } from "zod"
-import { updateFlightplan } from "@/app/actions/updateFlightplan"
+import { Flightplan } from "@/types/flightplan"
+import FormInput from "@/components/FormInput"
+
 
 const PilotSchema = z.object({
   squawk: z.coerce.number(),
@@ -40,6 +43,7 @@ export default function PilotDashboard({ flightplan }: { flightplan: Flightplan 
               <FormInput form={form} label={"Squawk"} type={"number"} id={"squawk"} />
               <FormInput form={form} label={"Frequency"} type={"text"} id={"frequency"} />
               <Button type={"submit"} className="col-span-2">Submit</Button>
+              <Button type="button" className="col-span-2" onClick={deleteFlightplan({ flightplanId: flightplan.id })}>Delete</Button>
             </form>
             <FormMessage />
           </Form>
